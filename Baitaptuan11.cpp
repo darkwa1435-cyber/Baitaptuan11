@@ -14,10 +14,14 @@ node root (tree T){
     return (emptytreecheck(T) ? NIL : 0);
 }
 int left_child(node p, tree T){
-    return 2 * (p + 1) -1;
+    int left = 2 * (p + 1) -1;
+    if (left > T.maxnode) return NIL;
+    return left;
 }
 int right_child(node p, tree T){
-    return 2 * (p + 1);
+    int right = 2 * (p + 1);
+    if (right > T.maxnode) return NIL;
+    return right;
 }
 int main(){
     tree T;

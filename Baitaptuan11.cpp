@@ -31,6 +31,14 @@ void preorder(node p, tree T){
     }
     else return;
 }
+void postorder(node p, tree T){
+    if(p != NIL && T.data[p] != NIL){
+        postorder(left_child(p,T),T);
+        postorder(right_child(p,T),T);
+        cout << T.data[p] << " ";
+    }
+    else return;
+}
 int main(){
     tree T;
     T.maxnode = 0;
@@ -51,6 +59,9 @@ int main(){
     (phai == NIL) ? cout << "khong co con phai" << endl : cout << "con phai: " << T.data[phai] << endl;
     cout << "Preorder: ";
     preorder(root(T),T);
+    cout << endl;
+    cout << "Postorder: ";
+    postorder(root(T),T);
     cout << endl;
     return 0;
 }

@@ -39,6 +39,14 @@ void postorder(node p, tree T){
     }
     else return;
 }
+void inorder(node p, tree T){
+    if(p != NIL && T.data[p] != NIL){
+        inorder(left_child(p,T),T);
+        cout << T.data[p] << " ";
+        inorder(right_child(p,T),T);
+    }
+    else return;
+}
 int main(){
     tree T;
     T.maxnode = 0;
@@ -63,6 +71,8 @@ int main(){
     cout << "Postorder: ";
     postorder(root(T),T);
     cout << endl;
+    cout << "Inorder: ";
+    inorder(root(T),T);
     return 0;
 }
 

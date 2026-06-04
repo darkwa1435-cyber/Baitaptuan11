@@ -15,13 +15,21 @@ node root (tree T){
 }
 int left_child(node p, tree T){
     int left = 2 * (p + 1) -1;
-    if (left > T.maxnode) return NIL;
+    if (left >= T.maxnode) return NIL;
     return left;
 }
 int right_child(node p, tree T){
     int right = 2 * (p + 1);
-    if (right > T.maxnode) return NIL;
+    if (right >= T.maxnode) return NIL;
     return right;
+}
+void preorder(node p, tree T){
+    if(p != NIL && T.data[p] != NIL){
+        cout << T.data[p] << " ";
+        preorder(left_child(p,T),T);
+        preorder(right_child(p,T),T);
+    }
+    else return;
 }
 int main(){
     tree T;
@@ -39,8 +47,11 @@ int main(){
     int goc = root(T);
     int trai = left_child(goc,T);
     int phai = right_child(goc,T);
-    cout << "con trai: " << T.data[trai] << endl;
-    cout << "con phai: " << T.data[phai] << endl;
+    (trai == NIL) ? cout << "khong co con trai" << endl : cout << "con trai: " << T.data[trai] << endl;
+    (phai == NIL) ? cout << "khong co con phai" << endl : cout << "con phai: " << T.data[phai] << endl;
+    cout << "Preorder: ";
+    preorder(root(T),T);
+    cout << endl;
     return 0;
 }
 

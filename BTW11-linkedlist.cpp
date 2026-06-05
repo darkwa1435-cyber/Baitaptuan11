@@ -13,6 +13,30 @@ struct node {
 bool emptytreecheck(node* root){
     return (root == NULL);
 }
+void preorder(node* root){
+    if (root == NULL) return;
+    else {
+        cout << (root -> data) << " ";
+        preorder(root -> left);
+        preorder(root -> right);
+    }
+}
+void inorder(node* root){
+    if (root == NULL) return;
+    else {
+        inorder(root -> left);
+        cout << (root -> data) << " ";
+        inorder(root -> right);
+    }
+}
+void postorder(node* root){
+    if (root == NULL) return;
+    else{
+        postorder(root -> left);
+        postorder(root -> right);
+        cout << (root -> data) << " ";
+    }
+}
 int main(){
     struct node* root = new node(0);
     cout << "root: " << (root -> data) << endl;
@@ -28,5 +52,21 @@ int main(){
     cout << "node con trai cua node 1 phai: " << (root -> right -> left -> data) << endl;
     root -> right -> right = new node(6);
     cout << "node con phai cua node 1 phai: " << (root -> right -> right -> data) << endl;
+    cout << "preorder traversal: ";
+    preorder(root);
+    cout << endl;
+    cout << "inorder traversal: ";
+    inorder(root);
+    cout << endl;
+    cout << "postorder traversal: ";
+    postorder(root);
+    cout << endl;
+    delete root->left->left;
+    delete root->left->right;
+    delete root->left;
+    delete root->right->left;
+    delete root->right->right;
+    delete root->right;
+    delete root;
     return 0;
 }
